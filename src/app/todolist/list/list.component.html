@@ -1,0 +1,6 @@
+<ul class="todo-list">
+   <app-item *ngFor="let item of items"
+             [item]="item"
+             (itemClicked)="itemClicked.emit($event)"
+             (itemChecked)="itemChecked.emit($event)"></app-item>
+</ul>

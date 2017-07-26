@@ -1,0 +1,22 @@
+<li 
+    [class]="item.completed? 'completed' : ''"  
+    [class]="item.editing? 'editing' : '' ">
+  <div class="view">
+
+    <input class="toggle"
+           [checked]="item.completed"
+           type="checkbox"
+           (click)="this.onChecked()">
+
+    <label (dblclick)="this.startEdit(); inputEdit.focus()">{{ item.title  }}</label>
+         
+    <button (click)="itemClicked.emit(this.item)"
+            class="destroy"></button>
+  </div>
+    <input #inputEdit class="edit" 
+        *ngIf="item.editing"
+        [value]="item.title"
+        (keydown.enter)="endEdit($event.target.value);"
+        (keydown.escape)="cancelEdit()"
+        />
+</li>
